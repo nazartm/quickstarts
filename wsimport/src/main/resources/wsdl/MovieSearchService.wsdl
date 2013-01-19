@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions name="MovieSearchServiceDefinitions" 
+             targetNamespace="http://nazar.annagurban.com/tutorial/wsimport/service/v1" 
+             xmlns="http://schemas.xmlsoap.org/wsdl/" 
+             xmlns:tns="http://nazar.annagurban.com/tutorial/wsimport/service/v1" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:msg="http://nazar.annagurban.com/tutorial/wsimport/service/messages/v1">
+    <types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                    targetNamespace="http://nazar.annagurban.com/tutorial/wsimport/service/messages/v1" 
+                    xmlns:model="http://nazar.annagurban.com/tutorial/wsimport/service/model/v1">
+            <xsd:import namespace="http://nazar.annagurban.com/tutorial/wsimport/service/model/v1" schemaLocation="MovieSearch.xsd"/>
+            
+            <xsd:element name="search">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="filter" type="model:filter" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            
+            <xsd:element name="searchResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="searchResult" type="model:searchResult" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+    
+    <message name="search">
+        <part name="parameters" element="msg:search"/>
+    </message>
+    <message name="searchResponse">
+        <part name="parameters" element="msg:searchResponse"/>
+    </message>
+    
+    <!-- Name of the interface -->
+    <portType name="MovieSearch">
+        <operation name="search">
+            <input message="tns:search"/>
+            <output message="tns:searchResponse"/>
+        </operation>
+    </portType>
+    
+    <binding name="MovieSearchServiceBinding" type="tns:MovieSearch">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="search">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    
+    <service name="MovieSearchService">
+        <port name="MovieSearchServicePort" binding="tns:MovieSearchServiceBinding">
+            <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
+        </port>
+    </service>
+</definitions>
+

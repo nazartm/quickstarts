@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" 
+           targetNamespace="http://nazar.annagurban.com/tutorial/wsimport/service/model/v1" 
+           xmlns:tns="http://nazar.annagurban.com/tutorial/wsimport/service/model/v1" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="filter">
+        <xs:sequence>
+            <xs:element name="genre" type="tns:genre" minOccurs="0" />
+            <xs:element name="releasedAfter" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="releasedBefore" type="xs:dateTime" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="searchResult">
+        <xs:sequence>
+            <xs:element name="movies" type="tns:movie" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="totalResultsCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="movie">
+        <xs:sequence>
+            <xs:element name="genres" type="tns:genre" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="releaseDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="title" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="genre">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ACTION"/>
+            <xs:enumeration value="CRIME"/>
+            <xs:enumeration value="DRAMA"/>
+            <xs:enumeration value="THRILLER"/>
+            <xs:enumeration value="COMEDY"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
