@@ -22,16 +22,12 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-server</artifactId>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-grizzly2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey.contribs</groupId>
-            <artifactId>jersey-spring</artifactId>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-spring3</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -61,6 +57,10 @@
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-moxy</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -72,6 +72,12 @@
                 <configuration>
                     <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
                 </configuration>
+            </plugin>
+            <!-- run with mvn jetty:run -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.1.2.v20140210</version>
             </plugin>
         </plugins>
     </build>

@@ -10,18 +10,23 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import org.dozer.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import tutorial.domain.MyPost;
 import tutorial.service.BlogService;
 
 @Named
 @Scope("request")
-public class BlogServiceImpl implements BlogRestfulService {
+public class DefaultBlogService implements BlogRestfulService {
 
-    @Inject
     private BlogService service;
-    @Inject
     private Mapper mapper;
+
+    @Autowired
+    public DefaultBlogService(BlogService service, Mapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
+    }
 
     @Override
     public List<Post> getPosts() {

@@ -13,8 +13,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 @Path("/blog")
-@Consumes("application/xml")
-@Produces("application/xml")
+@Consumes({"application/xml", "application/json"})
+@Produces({"application/xml", "application/json"})
 public interface BlogRestfulService {
 
     @GET
