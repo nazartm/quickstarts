@@ -17,13 +17,13 @@ import tutorial.service.BlogService;
 
 @Named
 @Scope("request")
-public class DefaultBlogService implements BlogRestfulService {
+public class DefaultBlogRestfulService implements BlogRestfulService {
 
     private BlogService service;
     private Mapper mapper;
 
     @Autowired
-    public DefaultBlogService(BlogService service, Mapper mapper) {
+    public DefaultBlogRestfulService(BlogService service, Mapper mapper) {
         this.service = service;
         this.mapper = mapper;
     }
