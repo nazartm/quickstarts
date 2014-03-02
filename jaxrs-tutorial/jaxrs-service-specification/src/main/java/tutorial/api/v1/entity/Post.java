@@ -1,17 +1,23 @@
-package tutorial.domain;
+package tutorial.api.v1.entity;
 
 import java.util.Date;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-public class MyPost {
+@XmlRootElement
+@XmlType(propOrder = {"title", "datePublished", "tags", "content"})
+public class Post {
 
     private int id;
     private String title;
     private Date datePublished;
     private List<String> tags;
-    private List<String> categories;
     private String content;
 
+    @XmlAttribute
     public int getId() {
         return id;
     }
@@ -36,6 +42,7 @@ public class MyPost {
         this.datePublished = datePublished;
     }
 
+    @XmlElement
     public List<String> getTags() {
         return tags;
     }
@@ -50,13 +57,5 @@ public class MyPost {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public List<String> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<String> categories) {
-        this.categories = categories;
     }
 }

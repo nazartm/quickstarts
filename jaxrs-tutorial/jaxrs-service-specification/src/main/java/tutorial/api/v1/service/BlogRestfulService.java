@@ -1,6 +1,6 @@
-package tutorial.jaxrs.service;
+package tutorial.api.v1.service;
 
-import tutorial.jaxrs.entity.Post;
+import tutorial.api.v1.entity.Post;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -13,8 +13,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 @Path("/blog")
-@Consumes({"application/xml", "application/json"})
-@Produces({"application/xml", "application/json"})
+@Consumes({"application/vnd.blog.v1+xml", "application/vnd.blog.v1+json"})
+@Produces({"application/vnd.blog.v1+xml", "application/vnd.blog.v1+json"})
 public interface BlogRestfulService {
 
     @GET

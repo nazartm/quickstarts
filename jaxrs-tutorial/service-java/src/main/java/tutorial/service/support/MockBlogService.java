@@ -58,6 +58,7 @@ public class MockBlogService implements BlogService {
         post.setId(id);
         post.setDatePublished(new Date());
         post.setTags(Arrays.asList("hello-world", "example"));
+        post.setCategories(Arrays.asList("Java", "Tutorials"));
         post.setTitle("Hello world!");
         post.setContent("This is my first post.");
         return post;

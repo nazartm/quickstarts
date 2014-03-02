@@ -1,4 +1,4 @@
-package tutorial.jaxrs.entity;
+package tutorial.api.v2.entity;
 
 import java.util.Date;
 import java.util.List;
@@ -8,13 +8,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
-@XmlType(propOrder = {"title", "datePublished", "tags", "content"})
+@XmlType(propOrder = {"title", "datePublished", "tags", "categories", "content"})
 public class Post {
 
     private int id;
     private String title;
     private Date datePublished;
     private List<String> tags;
+    private List<String> categories;
     private String content;
 
     @XmlAttribute
@@ -42,13 +43,22 @@ public class Post {
         this.datePublished = datePublished;
     }
 
-    @XmlElement(name = "tag")
+    @XmlElement
     public List<String> getTags() {
         return tags;
     }
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    @XmlElement
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
     }
 
     public String getContent() {

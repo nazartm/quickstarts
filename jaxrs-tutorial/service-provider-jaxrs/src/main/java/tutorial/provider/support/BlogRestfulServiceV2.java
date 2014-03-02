@@ -1,10 +1,9 @@
-package tutorial.provider.jaxrs;
+package tutorial.provider.support;
 
-import tutorial.jaxrs.entity.Post;
-import tutorial.jaxrs.service.BlogRestfulService;
+import tutorial.api.v2.entity.Post;
+import tutorial.api.v2.service.BlogRestfulService;
 import java.util.ArrayList;
 import java.util.List;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
@@ -17,13 +16,13 @@ import tutorial.service.BlogService;
 
 @Named
 @Scope("request")
-public class DefaultBlogRestfulService implements BlogRestfulService {
+public class BlogRestfulServiceV2 implements BlogRestfulService {
 
     private BlogService service;
     private Mapper mapper;
 
     @Autowired
-    public DefaultBlogRestfulService(BlogService service, Mapper mapper) {
+    public BlogRestfulServiceV2(BlogService service, Mapper mapper) {
         this.service = service;
         this.mapper = mapper;
     }

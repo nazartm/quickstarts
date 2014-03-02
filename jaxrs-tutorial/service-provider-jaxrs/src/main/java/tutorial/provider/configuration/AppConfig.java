@@ -1,7 +1,8 @@
 package tutorial.provider.configuration;
 
 import org.glassfish.jersey.server.ResourceConfig;
-import tutorial.provider.jaxrs.DefaultBlogRestfulService;
+import tutorial.provider.support.BlogRestfulServiceV1;
+import tutorial.provider.support.BlogRestfulServiceV2;
 
 /**
  *
@@ -10,6 +11,7 @@ import tutorial.provider.jaxrs.DefaultBlogRestfulService;
 public class AppConfig extends ResourceConfig {
 
     public AppConfig() {
-        register(DefaultBlogRestfulService.class);
+        register(BlogRestfulServiceV1.class);
+        register(BlogRestfulServiceV2.class);
     }
 }
